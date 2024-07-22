@@ -1,0 +1,145 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events, Hackathons, and Scholarships</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.0.1/dist/framer-motion.min.js"></script>
+    <style>
+        /* Import font families */
+        @font-face {
+            font-family: 'GT Walsheim';
+            src: url('path/to/GTWalsheim.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'GT Walsheim';
+            src: url('path/to/GTWalsheimBold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        .hover-image{
+            width: 50vw;
+            height: 100vh;
+            border-radius: 0;
+            transition: transform 0.3s ease-in-out;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            position: fixed;
+            top: 0;
+            right: 0;
+            transform: none;
+            z-index: -1;
+        }
+        
+
+        .hovered {
+            opacity: 1;
+        }
+
+        .div-1 {
+            transition: transform 1s ease-in-out;
+        }
+        .div-1:hover {
+            transition: transform 1s ease-in-out;
+        }
+
+        .div-2 {
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+        }
+
+        .div-2:not(.hidden) {
+            opacity: 1;
+        }
+        .hero-images {
+            display: none;
+        }
+
+        .hero-images.show {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-zinc-900 h-screen flex flex-col relative overflow-hidden">
+    <header class="header bg-opacity-0 text-white w-full py-4 px-6 flex justify-between items-center z-10">
+        <!-- <h1 class="header-title text-3xl">Student<span class="italic ml-1">corner</span></h1> -->
+        <h1 class="header-title text-3xl font-bold">Student<span class="italic ml-1">corner</span></h1>
+        <nav class="header-links flex text-xl">
+            <!-- <a href="#" class="hover:text-purple-300 mx-2">About</a>
+            <a href="/signin" class="hover:text-purple-300 mx-2">Login</a>
+            <a href="/signup" class="hover:text-purple-300 mx-2">Signup</a> -->
+            <a href="#" class="hover:text-purple-300 mx-2">About</a>
+            <% if (isAuthenticated) { %>
+                <a href="/events" class="hover:text-purple-300 mx-2">Events</a>
+                <a href="/hackathons" class="hover:text-purple-300 mx-2">Hackathons</a>
+                <a href="/scholarships" class="hover:text-purple-300 mx-2">Scholarships</a>
+                <a href="/logout" class="hover:text-purple-300 mx-2">Logout</a>
+            <% } else { %>
+                <a href="/signin" class="hover:text-purple-300 mx-2">Login</a>
+                <a href="/signup" class="hover:text-purple-300 mx-2">Signup</a>
+            <% } %>
+        </nav>
+    </header>
+
+    <div class="flex-grow flex">
+        <div class="w-1/2 h-screen text-zinc-200 font-['GT_Walsheim'] font-black text-[10vw] uppercase leading-none flex flex-col">
+            <div class="div-1 translate-y-1/2 z-[999]">
+                <h1 id="events" class="w-[33vw] animate__animated animate__fadeInLeft hover:text-purple-300">events</h1>
+                <h1 id="hackathons" class="animate__animated animate__fadeInLeft hover:text-purple-300">hackathons</h1>
+                <h1 id="scholarships" class="animate__animated animate__fadeInLeft hover:text-purple-300">scholarships</h1>
+            </div>
+        </div>
+        <div class="relative div-2 w-1/2 h-full overflow-hidden hidden" id="hoverDiv">
+            <img id="event-img" src="../public/images/event.jpg" alt="Image 1" class="hover-image">
+            <img id="hack-img" src="../public/images/hack.jpg" alt="Image 2" class="hover-image">
+            <img id="scholar-img" src="../public/images/scholor.jpg" alt="Image 3" class="hover-image">
+        </div>
+    </div>
+
+    <script>
+        const eventImage = document.getElementById('event-img');
+        const hackImage = document.getElementById('hack-img');
+        const scholorImage = document.getElementById('scholar-img');
+
+        document.querySelectorAll('.div-1 h1').forEach(item => {
+            item.addEventListener('mouseover', event => {
+                const hoveredText = event.target.textContent.toLowerCase();
+                if (hoveredText === 'hackathons') {
+                    eventImage.classList.remove('hovered');
+                    hackImage.classList.add('hovered');
+                    const div = document.getElementById('hoverDiv');
+                    div.classList.remove('hidden');
+                    scholorImage.classList.remove('hovered');
+                } else if (hoveredText === 'events') {
+                    eventImage.classList.add('hovered');
+                    hackImage.classList.remove('hovered');
+                    scholorImage.classList.remove('hovered');
+                    const div = document.getElementById('hoverDiv');
+                    div.classList.remove('hidden');
+                } else if (hoveredText === 'scholarships') {
+                    eventImage.classList.remove('hovered');
+                    hackImage.classList.remove('hovered');
+                    scholorImage.classList.add('hovered');
+                    const div = document.getElementById('hoverDiv');
+                    div.classList.remove('hidden');
+                }
+            });
+
+            item.addEventListener('mouseleave', () => {
+                eventImage.classList.remove('hovered');
+                hackImage.classList.remove('hovered');
+                scholorImage.classList.remove('hovered');
+                const div = document.getElementById('hoverDiv');
+                div.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

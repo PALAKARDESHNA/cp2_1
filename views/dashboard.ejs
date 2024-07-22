@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Import font families */
+        @font-face {
+            font-family: 'GT Walsheim';
+            src: url('path/to/GTWalsheim.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'GT Walsheim';
+            src: url('path/to/GTWalsheimBold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* Body styles */
+        body {
+            background-color: #202123;
+            color: #ffffff;
+            font-family: 'GT Walsheim', sans-serif;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: rgba(32, 33, 35, 0);
+            color: #ffffff;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .header-title {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .header-links a {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .header-links a:hover {
+            color: #8a63e5;
+        }
+
+        /* Profile Section styles */
+        .profile-section {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            height: auto;
+            min-height: 80vh; /* Increase height */
+        }
+
+        .profile-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .profile-section hr {
+            border-color: #8a63e5;
+            margin: 1rem auto;
+            width: 50%;
+        }
+
+        .profile-section .btn {
+            background-color: #8a63e5;
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-section .btn:hover {
+            background-color: #6c41a3;
+        }
+
+        .input-field {
+            background-color: #f0f0f0;
+            border: 1px solid #8a63e5;
+            color: #202123;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #6c41a3;
+        }
+
+        .btn-save {
+            background-color: #2ecc71;
+        }
+
+        .btn-save:hover {
+            background-color: #27ae60;
+        }
+
+        /* Notification Icon styles */
+        .notification-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* User's Name styles */
+        /* .user-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #202123;
+
+        } */
+.user-name {
+    font-size: 2.5rem; /* Increase the font size for more emphasis */
+    font-weight: 700; /* Make the font weight heavier */
+    color: #2d3748; /* Change the color to a darker shade of blue */
+    font-family: 'Arial', sans-serif; /* Change the font-family to Arial */
+    letter-spacing: 1.5px; /* Increase letter spacing for better readability */
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">Student<span class="italic ml-1">corner</span></h1>
+        <nav class="header-links">
+            <a href="#" class="hover:text-purple-300 mx-2">About</a>
+            <a href="/events" class="hover:text-purple-300 mx-2">Events</a>
+            <a href="/hackathons" class="hover:text-purple-300 mx-2">Hackathons</a>
+            <a href="/scholarships" class="hover:text-purple-300 mx-2">Scholarships</a>
+            <a href="/logout" class="hover:text-purple-300 mx-2">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container mx-auto py-8 h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
+            <!-- 1st Column -->
+            <div class="lg:col-span-1 profile-section relative">
+                <!-- Notification Icon -->
+                <div class="notification-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="black" height="40px" width="40px">
+                        <path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/>
+                    </svg>
+                </div>
+                <!-- Profile Photo -->
+                <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                         class="rounded-full" width="150">
+                </div>
+                <!-- User's Name -->
+                <h2 class="text-2xl font-semibold text-center mt-4 user-name"><%= accounts.name %></h2>
+                <!-- Divider -->
+                <hr>
+                <!-- Buttons -->
+                <div class="flex flex-col items-center space-y-4">
+                    <button class="btn">Past Events</button>
+                    <button class="btn">Past Hackathons</button>
+                    <!-- Add more buttons as needed -->
+                </div>
+            </div>
+            <!-- 2nd Column -->
+            <div class="lg:col-span-2 profile-section">
+                <!-- Content will be dynamically loaded here based on button click -->
+                <form id="profileForm" action="updateDetails" method="post">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" class="input-field" value="<%= accounts.name %>" required>
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="input-field" value="<%= accounts.email %>" required>
+                        </div>
+                        <div>
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" class="input-field" value="<%= accounts.phonenumber %>" required>
+                        </div>
+                        <!-- <div>
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob" class="input-field" value="<%= accounts.dob %>" required>
+                        </div> -->
+                        <!-- <div>
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob" class="input-field" value="<%= new Date(accounts.dob).toISOString().split('T')[0] %>" required>
+                        </div> -->
+                        <div>
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob" class="input-field" value="<%= new Date(new Date(accounts.dob).setDate(new Date(accounts.dob).getDate() + 1)).toISOString().split('T')[0] %>" required>
+                        </div>
+                        
+
+                        <div>
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender" class="input-field" required>
+                                <option value="male" <% if(accounts.gender === 'male') { %> selected <% } %>>Male</option>
+                                <option value="female" <% if(accounts.gender === 'female') { %> selected <% } %>>Female</option>
+                                <option value="other" <% if(accounts.gender === 'other') { %> selected <% } %>>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-save">Save</button>
+                        <!-- <input type="submit" class="btn btn-save" value="Save"> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script>
+        // JavaScript to handle form submission and update profile
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            // Perform AJAX request or form submission to update profile data
+            // Example: You can use fetch() to send the form data to a server endpoint
+            // Upon successful update, you may want to show a success message or reload the page
+            alert('Profile updated successfully!');
+        });
+    </script> -->
+</body>
+</html>
